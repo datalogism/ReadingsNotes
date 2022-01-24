@@ -1,0 +1,93 @@
+---
+event_url: http://www.ixxi.fr/agenda/seminaires/cycles-de-seminaires/intelligence-artificielle-et-langage/201ccamembert-must-die-jk-lol-beyond-sesame-street-based-naming-schemes-a-study-on-the-performance-robustness-of-large-monolingual-language-models-and-their-character-based-counterparts
+---
+#  CamemBERT must die! (jk,lol)
+
+Djamé Seddah 
+
+## Abstract
+As cliché as it sounds, pretrained language models are now ubiquitous in Natural Language Processing, the most prominent ones being arguably Bert (Delvin et al, 2018). Many works have shown that Bert-based models are able to capture meaningful syntactic information using nothing else than raw data for training (eg. Jawahar et al, 2019) and this ability is probably one of the reasons of its success.
+
+Anyway, until November 2019 and the release of CamemBERT, most available models were trained on English data or on the concatenation of data in multiple languages. In this talk, I’ll present the results of a work that investigates the feasibility of training monolingual Transformer-based language models for other languages, taking French as an example and evaluating our language models on part-of-speech tagging, dependency parsing, named entity recognition and natural language inference tasks. We show that the use of web crawled data is preferable to the use of Wikipedia data. Our best performing model established the state of the art in all four downstream tasks. More surprisingly, we show that a relatively small web crawled dataset (a few gigabytes) leads to results that are as good as those obtained using two magnitudes larger datasets.
+
+Important questions still remain though:  What to do in case of dialects with high variabilities in scarce resource scenarios? I’ll present a first round of results using a CharacterBERT model trained on very little data and evaluated on noisy French user-generated content and dialectal north-African Arabic written in Latin script (Arabizi), as commonly found in social media. Our experiments show that those models exhibit strong performance when facing noisy-content but so do “classical” Bert-based models trained on literally 100x more data. This questions the usefulness of those characterBert models in relatively resource-rich scenarios, even when facing very noisy text.
+
+Presented by Djamé Seddah, joint work with Louis Martin, Benjamin Muller, Pedro Javier Ortiz Suárez, Yoann Dupont, Laurent Romary, Éric Villemonte de la Clergerie, and Benoît Sagot for the CamemBert part. With Arij Riabi for the CharacterBert experiments.
+
+## TAL ?
+* two schools : linguistics knowledge VS no linguistic models
+## How to represent a word ? 
+
+* as discrete symbol
+* word paradigm
+The distributionnal hypothesis of Harris 1954
+The contextual hypothesis of Firth 1957
+-> exemples from Goldberg
+
+Word could be represented as vectors 
+The use of concordancier for describing context
+
+## Embeddings via word2vec 
+the important paper about it : Omer Levy, Yoav Goldberg, Ido Dagan
+https://aclanthology.org/Q15-1016/
+How to play with embeddings via operations (divions/substractions/additions/divisions)
+but pb when polysemy....
+
+### and BERT came 
+transformer archi
+different vector depending of context
+the masked word technic
+integrating the next sentence in the pipeline 
+
+dataset used : Wikipedia & Books corpus (without the rights)
+
+The BERTOLOGY of Rogers and al 2020 : https://arxiv.org/abs/2002.12327
+BERT could learn a lot of things 
+
+### But what is captured
+* synthax : low layers
+* sem : high layers
+attention head of BERT : allow to extract synthaxic dep
+
+### And BERT became multilingual
+* Delvin et Al 2018 : 104 lang
+* But not better on specific lang question 
+
+### About camemBERT 
+* no french ML
+* Flaubert 
+* 12 layers / 768 hinden dim / 12 att head / 110M param / 32 k words 
+and whole word masking
+
+2 usages : finetuning / feature based emb
+4 tasks :  POS / DEP pars / NER / NLI (fairseq)
+
+Corpus OScar
+size perf : 4G / 138 G >> almost the same perf :o
+
+The design choise have impact on tasks perf :
+* Parsing / NER less than 30 000 epochs
+* BUt NLI : > 30 000 epochs 
+pb of cutoff
+
+### How to work on low ressource lang ?
+* the Narabiz Arab dialect
+high variability of forms ! and 30% of french forms
+> the Hicham work on Character BERT using Elmo model
+
+less data but perf honorable !
+Seems interresting but so long to train
+### Last news 
+the BPE dropout model : https://aclanthology.org/2020.acl-main.170.pdf
+integrate Character BERT  via normalisation tech
+
+The question of the cut-off pb :
+some features seems to be learned with a high number of epochs...
+How to trick it ?
+
+### Questions part
+* compressed models ?
+* is it possible to combine Flaubert and BERT ?
+
+
+

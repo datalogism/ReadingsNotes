@@ -10,7 +10,7 @@ link : https://aclanthology.org/2021.findings-emnlp.204/
 # REBEL: Relation Extraction By End-to-end Language generation
 
 ## ABTRACT
-Generative commonsense reasoning which aims to empower machines to generate sentences with the capacity of reasoning over a set of concepts is a critical bottleneck for text generation. Even the state-of-the-art pre-trained language generation models struggle at this task and often produce implausible and anomalous sentences. One reason is that they rarely consider incorporating the knowledge graph which can provide rich relational information among the commonsense concepts. To promote the ability of commonsense reasoning for text generation, we propose a novel knowledge graph augmented pre-trained language generation model KG-BART, which encompasses the complex relations of concepts through the knowledge graph and produces more logical and natural sentences as output. Moreover, KG-BART can leverage the graph attention to aggregate the rich concept semantics that enhances the model generalization on unseen concept sets. Experiments on benchmark CommonGen dataset verify the effectiveness of our proposed approach by comparing with several strong pre-trained language generation models, particularly KG-BART outperforms BART by 5.80, 4.60, in terms of BLEU-3, 4. Moreover, we also show that the generated context by our model can work as background scenarios to benefit downstream commonsense QA tasks. 
+Extracting relation triplets from raw text is a crucial task in Information Extraction, en- abling multiple applications such as populat- ing or validating knowledge bases, factcheck- ing, and other downstream tasks. However, it usually involves multiple-step pipelines that propagate errors or are limited to a small num- ber of relation types. To overcome these is- sues, we propose the use of autoregressive seq2seq models. Such models have previously been shown to perform well not only in lan- guage generation, but also in NLU tasks such as Entity Linking, thanks to their framing as seq2seq tasks. In this paper, we show how Relation Extraction can be simplified by ex- pressing triplets as a sequence of text and we present REBEL, a seq2seq model based on BART that performs end-to-end relation ex- traction for more than **200 different relation types**. We show our model’s flexibility by **fine- tuning it on an array of Relation Extraction and Relation Classification benchmarks**, with it at- taining state-of-the-art performance in most of them.
 
 ## Intro and context
 
@@ -42,11 +42,14 @@ Open to unseen entities !
 
 ## The REBEL model
 
-BART-Large as base model
+* Must be fine tuned on relation extraction task and relation classification (with few epochs)
+
+Based on BART-Large 
 
 using the translation task training 
 
-input : sentence with entities  / set of triplets of relation
+> input : sentence with entities  
+> transling it into a set of triples that refers to relations (that can not appears in the sentences)
 
 Triplet linearisation reversble process for enabling relations in text  : minimise nb of token encoded
 

@@ -20,10 +20,10 @@ http://mousse-project.org/events/event-a5f3r5.html
 
 ### DAY 2 
 
-* Summary of the first day - Roberto Navigli
-* Neurosymbolic semantic parsing - Alexander Koller
-* Distilling conceptual knowledge from BERT - Steven Schockaert
-* REBEL: Relation Extraction By End-to-end Language generation - Pere-Lluís Huguet Cabot
+* Summary of the first day - Roberto Navigli X
+* Neurosymbolic semantic parsing - Alexander Koller X
+* Distilling conceptual knowledge from BERT - Steven Schockaert X
+* REBEL: Relation Extraction By End-to-end Language generation - Pere-Lluís Huguet Cabot X
 * Unifying verb-based resources into an event-type ontology -Jan Hajič
 * Wrap-up and closing session - Roberto Navigli
 
@@ -120,3 +120,92 @@ A Review](https://arxiv.org/pdf/2110.10470.pdf)
  * 
 
 ### 6 -  What do neural vs neurosymbolic models learn? - Hinrich Schütze
+
+NLU benchmark CODA 2021 (CoDA21: Evaluating Language Understanding Capabilities of NLP Models With Context-Definition Alignment(https://arxiv.org/pdf/2203.06228.pdf))
+* Task : Define me a word definition  
+* Best model based on simple distance metrics > Neural don't reason
+
+* [Static Embeddings as Efficient Knowledge Bases?](https://arxiv.org/pdf/2104.07094.pdf) > they are on some tasks !
+* Languages models as knowledge base ? underline differents issues :
+ * entity ambiguity
+ * rare entities 
+ * nb of correct answer n!= 1 / n=0 / n>1
+ => ranking could work but low
+ 
+ * [BeliefBank: Adding Memory to a Pre-Trained Language Model for a Systematic Notion of Belief](https://arxiv.org/pdf/2109.14723.pdf)
+  * adding memory with symbolic executive
+
+Other interesting papers :
+True Few-Shot Learning with Prompts—A Real-World Perspective(https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00485/111728)
+(https://epub.ub.uni-muenchen.de/92448/)
+The Reddit Politosphere: A Large-Scale Text and Network Resource of Online Political Discourse (https://ojs.aaai.org/index.php/ICWSM/article/view/19377/19149)
+Geographic Adaptation of Pretrained Language Models(https://arxiv.org/abs/2203.08565)
+Modular and Parameter-Efficient Multimodal Fusion with Prompting(https://arxiv.org/pdf/2203.08055.pdf)
+
+## DAY 2 
+
+### 1. Summary of the first day - Roberto Navigli
+
+=> Meaning of human level in NLP ?
+* Disagreement due to cultural / social 
+* the question of interpretation
+* Human can explain prediction
+* Seriously need to revise data anotation process
+
+=> Combining neural / symbolic systems ?
+* Where integrating it in a neural system ? Decoding / fine tuning / retrivial system ?
+
+=> How to build a KB ?
+* manually ? NO !
+* auto / semi-auto
+* semantic parsing
+
+=> Others remarks
+* The problem of low resources
+* Boostraping existing system ? More 
+* The idea of a predicate repository
+
+### 2. Neurosymbolic semantic parsing - Alexander Koller
+
+The problem of compositional generalisation 
+COGS corpus challenge :
+* Seq to Seq not efficient on it => Not enough data ?
+
+Seq2Seq good on lexical tasks but fails in synthaxic, semantic tasks. => one model > too much tasks ?
+
+Am dependency parsing => allows to learn semantic dependancy tree
+=> From tree to graph : use of AM algrebra 
+
+Help to solve COGS  with a neural Barkler parser
+Compositional Generalization Requires Compositional Parsers https://arxiv.org/pdf/2202.11937.pdf
+Learning compositional structures for semantic graph parsing (https://arxiv.org/pdf/2106.04398.pdf)
+
+
+### 3. Distilling conceptual knowledge from BERT - Steven Schockaert
+
+Ruled based systems are also challenging : generally incomplete and generating from LM is noisy
+=> need of flexible reasoning for interpolation (ex: Analogical reasoning)
+
+Concept embeddings from BERT ? 
+=> Inducing Relational Knowledge from BERT (https://www.ijcai.org/proceedings/2021/0530.pdf)
+=> trying to infers differents relations (causality / Attribute / Lexical / Commonsense / Morphological) on DiffVec dataset
+
+Masking concept is better than no mask during training step !
+
+Distilling relation embeddings from pre-trained language models(https://arxiv.org/pdf/2110.15705.pdf)
+* relation embeddings : vectors of pairs of words 
+* better results with RoberTA
+
+Relation vectors VS KB - how to deal with this duality ?
+
+ 
+### 4. REBEL: Relation Extraction By End-to-end Language generation - Pere-Lluís Huguet Cabot 
+
+Input : Raw text 
+Output : entity relation entity sequence
+
+* step 1 : Corpus creation crocodile based on TREX (wikipedia / Wikidata + NLI)
+* step 2 : linearize dataset 
+pre-training important 
+
+for more info about this paper read this reading note : https://github.com/datalogism/ReadingsNotes/blob/main/Articles/2022_01_13_Rebel_navigli_cabot.md
